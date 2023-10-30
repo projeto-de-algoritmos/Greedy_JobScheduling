@@ -1,3 +1,5 @@
+from jinja2 import Environment, FileSystemLoader
+
 def agendar_tarefas(funcionarios, tarefas):
     funcionarios_ordenados = sorted(funcionarios, key=lambda x: x['carga_de_trabalho'])
     agendamento = []
@@ -25,14 +27,20 @@ funcionarios = [
 ]
 
 tarefas = [
-    {'nome': 'Tarefa1', 'carga_de_trabalho': 15},
+    {'nome': 'Tarefa1', 'carga_de_trabalho': 25},
     {'nome': 'Tarefa2', 'carga_de_trabalho': 15},
-    {'nome': 'Tarefa3', 'carga_de_trabalho': 10},
-    {'nome': 'Tarefa4', 'carga_de_trabalho': 25},
-    {'nome': 'Tarefa5', 'carga_de_trabalho': 15},
-    {'nome': 'Tarefa6', 'carga_de_trabalho': 15},
+    {'nome': 'Tarefa3', 'carga_de_trabalho': 35},
 ]
 
 agendamento = agendar_tarefas(funcionarios, tarefas)
-for agendamento_item in agendamento:
-    print(f'Tarefa: {agendamento_item["tarefa"]["nome"]}, Funcionário: {agendamento_item["funcionario"]}')
+
+# Configurar o ambiente Jinja2 para carregar templates de um diretório
+env = Environment(loader=FileSystemLoader('.'))
+template = env.get_template('template.html')
+
+# Renderizar o template com os dados
+html_output = template.render(agendamento=agendamento)
+
+
+with open('saida.html', 'w') as output_file:
+    output_file.write(html_output)

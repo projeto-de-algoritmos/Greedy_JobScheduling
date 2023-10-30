@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agendamento de Tarefas</title>
+</head>
+<body>
+    <h1>Agendamento de Tarefas</h1>
+    <table>
+        <tr>
+            <th>Tarefa</th>
+            <th>Funcionário</th>
+        </tr>
+        {% for item in agendamento %}
+            <tr>
+                <td>{{ item.tarefa.nome }}</td>
+                <td>{{ item.funcionario }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
