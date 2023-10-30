@@ -16,12 +16,15 @@ Descreva os objetivos do seu projeto e como ele funciona.
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Python<br>
+**Framework**: Flask<br>
+
+pip install -r requirements.txt
+flask run --debug
+
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+A aplicação representa um sistema de agendamento de tarefasem um ambiente de escritório. A aplicação devolve um cronograma otimizado com a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
