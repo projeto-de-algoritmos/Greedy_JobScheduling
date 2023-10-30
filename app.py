@@ -1,47 +1,51 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+funcionarios = []
+tarefas = []
+
 @app.route('/')
 def index():
-    
-    def agendar_tarefas(funcionarios, tarefas):
-        funcionarios_ordenados = sorted(funcionarios, key=lambda x: x['carga_de_trabalho'])
-        agendamento = []
+    return render_template('index.html', agendamento=agendar_tarefas(funcionarios, tarefas))
 
-        for tarefa in tarefas:
-            funcionario_disponivel = None
-            for funcionario in funcionarios_ordenados:
-                if funcionario['carga_de_trabalho'] >= tarefa['carga_de_trabalho']:
-                    funcionario_disponivel = funcionario
-                    break
+@app.route('/adicionar_funcionario', methods=['GET', 'POST'])
+def adicionar_funcionario():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        carga_de_trabalho = int(request.form.get('carga_de_trabalho'))
+        funcionarios.append({'nome': nome, 'carga_de_trabalho': carga_de_trabalho})
+        return redirect(url_for('index'))
+    return render_template('funcionarios.html')
 
-            if funcionario_disponivel:
-                agendamento.append({
-                    'tarefa': tarefa,
-                    'funcionario': funcionario_disponivel['nome']
-                })
-                funcionario_disponivel['carga_de_trabalho'] -= tarefa['carga_de_trabalho']
+@app.route('/adicionar_tarefa', methods=['GET', 'POST'])
+def adicionar_tarefa():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        carga_de_trabalho = int(request.form.get('carga_de_trabalho'))
+        tarefas.append({'nome': nome, 'carga_de_trabalho': carga_de_trabalho})
+        return redirect(url_for('index'))
+    return render_template('tarefas.html')
 
-        return agendamento
+def agendar_tarefas(funcionarios, tarefas):
+    funcionarios_ordenados = sorted(funcionarios, key=lambda x: x['carga_de_trabalho'])
+    agendamento = []
 
+    for tarefa in tarefas:
+        funcionario_disponivel = None
+        for funcionario in funcionarios_ordenados:
+            if funcionario['carga_de_trabalho'] >= tarefa['carga_de_trabalho']:
+                funcionario_disponivel = funcionario
+                break
 
-    funcionarios = [
-        {'nome': 'Funcionario1', 'carga_de_trabalho': 30},
-        {'nome': 'Funcionario2', 'carga_de_trabalho': 20},
-        {'nome': 'Funcionario3', 'carga_de_trabalho': 40},
-    ]
+        if funcionario_disponivel:
+            agendamento.append({
+                'tarefa': tarefa,
+                'funcionario': funcionario_disponivel['nome']
+            })
+            funcionario_disponivel['carga_de_trabalho'] -= tarefa['carga_de_trabalho']
 
-    tarefas = [
-        {'nome': 'Tarefa1', 'carga_de_trabalho': 25},
-        {'nome': 'Tarefa2', 'carga_de_trabalho': 15},
-        {'nome': 'Tarefa3', 'carga_de_trabalho': 35},
-    ]
-
-    agendamento = agendar_tarefas(funcionarios, tarefas)
-
-    # Renderize o template e retorne a saída HTML
-    return render_template('template.html', agendamento=agendamento)
+    return agendamento
 
 if __name__ == '__main__':
     app.run()

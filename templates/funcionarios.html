@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Funcionários</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+    {% include 'sidebar.html' %}
+    <div class="content">
+        <div class="navbar">
+            <h1>Adicionar Funcionários</h1>
+        </div>
+        <div class="main">
+            <form action="/adicionar_funcionario" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome">
+                <br>
+                <label for="carga_de_trabalho">Carga de Trabalho:</label>
+                <input type="number" name="carga_de_trabalho" id="carga_de_trabalho">
+                <br>
+                <input type="submit" value="Adicionar Funcionário">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

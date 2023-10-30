@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Scheduling - Agendamento de Tarefas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+  </head>
+  <body>
+    {% include 'sidebar.html' %}
+    <div class="content">
+      <div class="navbar">
+        <h1>Agendamento de Tarefas</h1>
+      </div>
+      <div class="main">
+        <h2>Tarefas Agendadas</h2>
+        <table>
+          <tr>
+            <th>Tarefa</th>
+            <th>Funcionário</th>
+          </tr>
+          {% for item in agendamento %}
+          <tr>
+            <td>{{ item.tarefa.nome }}</td>
+            <td>{{ item.funcionario }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
