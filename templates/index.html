@@ -17,11 +17,13 @@
           <tr>
             <th>Tarefa</th>
             <th>Funcionário</th>
+            <th>Prazo</th>
           </tr>
           {% for item in agendamento %}
           <tr>
             <td>{{ item.tarefa.nome }}</td>
             <td>{{ item.funcionario }}</td>
+            <td>{{ item.tarefa.prazo }}</td>
           </tr>
           {% endfor %}
         </table>

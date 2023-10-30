@@ -24,7 +24,7 @@ flask run --debug
 
 
 ## Uso 
-A aplicação representa um sistema de agendamento de tarefasem um ambiente de escritório. A aplicação devolve um cronograma otimizado com a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
+A aplicação representa um sistema de agendamento de tarefas em um ambiente de escritório. A aplicação devolve um cronograma otimizado com a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.

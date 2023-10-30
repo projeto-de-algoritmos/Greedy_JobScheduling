@@ -23,15 +23,22 @@ def adicionar_tarefa():
     if request.method == 'POST':
         nome = request.form.get('nome')
         carga_de_trabalho = int(request.form.get('carga_de_trabalho'))
-        tarefas.append({'nome': nome, 'carga_de_trabalho': carga_de_trabalho})
+        prazo = request.form.get('prazo')
+        tarefas.append({'nome': nome, 'carga_de_trabalho': carga_de_trabalho, 'prazo': prazo})
         return redirect(url_for('index'))
     return render_template('tarefas.html')
 
+@app.route('/relatorio')
+def gerar_relatorio():
+    return render_template('relatorio.html', funcionarios=funcionarios, tarefas=tarefas)
+
 def agendar_tarefas(funcionarios, tarefas):
+    # Ordena as tarefas por prazo mais próximo
+    tarefas_ordenadas = sorted(tarefas, key=lambda x: x['prazo'])
     funcionarios_ordenados = sorted(funcionarios, key=lambda x: x['carga_de_trabalho'])
     agendamento = []
 
-    for tarefa in tarefas:
+    for tarefa in tarefas_ordenadas:
         funcionario_disponivel = None
         for funcionario in funcionarios_ordenados:
             if funcionario['carga_de_trabalho'] >= tarefa['carga_de_trabalho']:
@@ -41,7 +48,7 @@ def agendar_tarefas(funcionarios, tarefas):
         if funcionario_disponivel:
             agendamento.append({
                 'tarefa': tarefa,
-                'funcionario': funcionario_disponivel['nome']
+                'funcionario': funcionario_disponivel['nome'],
             })
             funcionario_disponivel['carga_de_trabalho'] -= tarefa['carga_de_trabalho']
 

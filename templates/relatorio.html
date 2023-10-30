@@ -1,0 +1,44 @@
+<body>
+    {% include 'sidebar.html' %}
+    <div class="content">    
+        <div class="navbar">
+            <h1>Relatório</h1>
+        </div>
+        <div class="main">
+            <div class="navbar">
+                <h1>Relatório de Tarefas e Funcionários</h1>
+            </div>
+            <div class="main">
+                <h2>Funcionários</h2>
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Carga de Trabalho</th>
+                    </tr>
+                    {% for funcionario in funcionarios %}
+                        <tr>
+                            <td>{{ funcionario.nome }}</td>
+                            <td>{{ funcionario.carga_de_trabalho }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <h2>Tarefas</h2>
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Carga de Trabalho</th>
+                        <th>Prazo</th>
+                    </tr>
+                    {% for tarefa in tarefas %}
+                        <tr>
+                            <td>{{ tarefa.nome }}</td>
+                            <td>{{ tarefa.carga_de_trabalho }}</td>
+                            <td>{{ tarefa.prazo }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
