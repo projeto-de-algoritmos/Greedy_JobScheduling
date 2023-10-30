@@ -129,32 +129,22 @@
             <h1>Agendamento de Tarefas</h1>
         </div>
         <div class="main">
+            <form method="post" action="/render-result">
+
             <h2>Tarefas Agendadas</h2>
-            <form method="post" action="/next-step">
-              <div class="form-group">
-                <label for="employeeQuantity">Quantidade de Funcionários:</label>
-                <input type="number" id="employeeQuantity" name="qtd-funcionarios" min="1" required>
-              </div>
-          
-              <div class="form-group">
-                <label for="taskQuantity">Quantidade de Tarefas:</label>
-                <input type="number" id="taskQuantity" name="qtd-tarefas" min="1" required>
-              </div>
-          
-              <button type="submit">Enviar</button>
-            </form>
-            <!-- <table>
-                <tr>
-                    <th>Tarefa</th>
-                    <th>Funcionário</th>
-                </tr>
-                {% for item in agendamento %}
-                    <tr>
-                        <td>{{ item.tarefa.nome }}</td>
-                        <td>{{ item.funcionario }}</td>
-                    </tr>
+                <h3>funcionarios</h3>
+                {% for item in funcionarios %}
+                    <label for="">Funcionario {{item}}:<input type="text" name=funcionario{{item}} id="" class="funcionarios"></label>
                 {% endfor %}
-            </table> -->
+                <h3>Tarefas</h3>
+                {% for item in  tarefas %}
+                    <label for="">Tarefa {{item}}:<input type="text" name="tarefa{{item}}" id="" class="tarefas"></label>
+                {% endfor %}
+                
+                <button type="submit">Enviar</button>
+
+        </form>
+
         </div>
     </div>
 </body>
