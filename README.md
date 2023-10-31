@@ -1,6 +1,5 @@
 # Job Scheduling
 
-**Número da Lista**: X<br>
 **Conteúdo da Disciplina**: Greed<br>
 
 ## Alunos
@@ -10,25 +9,43 @@
 | 19/0023376 | Abraão Alves Ribeiro            |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O aplicação consiste em um sistema de agendamento de tarefas em um ambiente de escritório. Os funcionários têm várias tarefas com prazos diferentes. O problema é resolvido utilizando o algoritmo ganancioso, Interval Scheduling, para otimizar a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![](./public/img/agendamento.png)
+![](./public/img/tarefas.png)
+![](./public/img/funcionario.png)
+![](./public/img/relatorio.png)
+
 
 ## Instalação 
 **Linguagem**: Python<br>
 **Framework**: Flask<br>
 
-pip install -r requirements.txt
-flask run --debug
-
-Depois disto a aplicação estara rodando localmente podendo ser acessada pelo navegador na porta 5000
+Para instalar as dependências do projeto, execute o seguinte comando:
+```
+$ pip install requirements.txt
+```
 
 ## Uso 
-A aplicação representa um sistema de agendamento de tarefas em um ambiente de escritório. A aplicação devolve um cronograma otimizado com a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+Para iniciar a aplicação, execute um dos seguintes comandos:
+```
+$ flask run --debug 
+```
+
+ou 
+
+```
+python app.py
+```
+
+## Apresentação
+
+[Arquivo do vídeo](./apresentacao-greed-pauloeabraao.rar)
+
+[Link para a apresentação no youtube](https://youtu.be/uvnHgKt9a_c)
+
 
 
 
