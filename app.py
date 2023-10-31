@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
+import copy
 
 app = Flask(__name__)
 
 funcionarios = []
 tarefas = []
+
 
 @app.route('/')
 def index():
@@ -30,10 +32,11 @@ def adicionar_tarefa():
 
 @app.route('/relatorio')
 def gerar_relatorio():
-    return render_template('relatorio.html', funcionarios=funcionarios, tarefas=tarefas)
+    relatorio_funcionarios = copy.deepcopy(funcionarios)
+    relatorio_tarefas = copy.deepcopy(tarefas)
+    return render_template('relatorio.html', funcionarios=relatorio_funcionarios, tarefas=relatorio_tarefas)
 
 def agendar_tarefas(funcionarios, tarefas):
-    # Ordena as tarefas por prazo mais próximo
     tarefas_ordenadas = sorted(tarefas, key=lambda x: x['prazo'])
     funcionarios_ordenados = sorted(funcionarios, key=lambda x: x['carga_de_trabalho'])
     agendamento = []
