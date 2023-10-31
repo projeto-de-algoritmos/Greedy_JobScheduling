@@ -22,6 +22,7 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 pip install -r requirements.txt
 flask run --debug
 
+Depois disto a aplicação estara rodando localmente podendo ser acessada pelo navegador na porta 5000
 
 ## Uso 
 A aplicação representa um sistema de agendamento de tarefas em um ambiente de escritório. A aplicação devolve um cronograma otimizado com a ordem de execução das tarefas, levando em consideração os prazos e a carga de trabalho de cada funcionário.
