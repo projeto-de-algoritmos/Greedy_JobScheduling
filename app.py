@@ -6,7 +6,6 @@ app = Flask(__name__)
 funcionarios = []
 tarefas = []
 
-
 @app.route('/')
 def index():
     return render_template('index.html', agendamento=agendar_tarefas(funcionarios, tarefas))
